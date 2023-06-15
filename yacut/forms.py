@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, URLField
 from wtforms.validators import URL, DataRequired, Length, Optional, Regexp
 
-from .constants import LINK_REG
+from .constants import LINK_REGULAR
 
 
 class URLMap_Form(FlaskForm):
@@ -18,7 +18,7 @@ class URLMap_Form(FlaskForm):
             Optional(),
             Length(1, 16),
             Regexp(
-                regex=LINK_REG,
+                regex=LINK_REGULAR,
                 message='Допустимы только цифры и буквы "a-Z"')]
     )
     submit = SubmitField('Создать')

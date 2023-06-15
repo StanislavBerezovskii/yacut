@@ -4,7 +4,7 @@ from http import HTTPStatus
 from flask import jsonify, request
 
 from . import app, db
-from .constants import LINK_REG
+from .constants import LINK_REGULAR
 from .error_handlers import APIErrors
 from .models import URLMap
 from .views import check_short_id, get_db_object, get_unique_short_id
@@ -23,7 +23,7 @@ def create_short_link():
             raise APIErrors(f'Имя "{custom_id}" уже занято.')
         if custom_id == '' or custom_id is None:
             data['custom_id'] = get_unique_short_id()
-        elif not re.match(LINK_REG, custom_id):
+        elif not re.match(LINK_REGULAR, custom_id):
             raise APIErrors('Указано недопустимое имя для короткой ссылки')
     else:
         data['custom_id'] = get_unique_short_id()

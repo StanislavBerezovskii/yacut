@@ -3,7 +3,7 @@ import random
 from flask import flash, redirect, render_template
 
 from . import app, db
-from .constants import S_LENGTH, SYMBOLS
+from .constants import LENGTH, SYMBOLS
 from .forms import URLMap_Form
 from .models import URLMap
 
@@ -15,14 +15,12 @@ def get_db_object(column, query):
 
 def check_short_id(short_id):
     """Проверка уникальности нового адреса."""
-    if get_db_object(URLMap.short, short_id).first() is None:
-        return True
-    return False
+    return True if get_db_object(URLMap.short, short_id).first() is None else False
 
 
 def get_unique_short_id():
     """Генерация случайной уникальной последовательности из 6 символов."""
-    short_id = ''.join(random.choice(SYMBOLS) for i in range(S_LENGTH))
+    short_id = ''.join(random.choice(SYMBOLS) for i in range(LENGTH))
     if check_short_id(short_id):
         return short_id
     return get_unique_short_id()
