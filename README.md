@@ -1,61 +1,62 @@
-# Yacut
+# Project Yacut
 
-## Описание
+## Description:
 
-Данный проект выполнен в рамках обучающего курса Python-разработчик+ Yandex-Praktikum.
+This project was completed as part of the Python developer + Yandex-Practicum online course.
 
-**Yacut** - это сервис, прдназначенный для укорачивания ссылок, который ассоциирует длинные пользовательские ссылку с короткими. Короткую ссылку может предложить сам пользователь, или же она будет сгенерирована автоматически.
+**Yacut** is a link shortening service that associates long user links with short ones. The short link can be suggested by the user, or it will be generated automatically.
 
-Таким образом, данный сервис позволит превратить длинную и неудобную ссылку наподобие "https://flask.palletsprojects.com/en/2.2.x/changes/#version-2-0-0" в короткую и простую, такую как - "http://localhost/ver2". После создания короткой ссылки при переходе по ней происходит переадресация на исходный адрес.
+Thus, this service allows to turn a long and inconvenient link like “https://flask.palletsprojects.com/en/2.2.x/changes/#version-2-0-0” into a short and simple one like “http ://localhost/ver2".
+After creating a short link, user can be redirected to the original address bu you following the new link.
 
-Помимо работы в браузере с графическим интерфейсом, сервис так же предоставляет API, дублирующий его функционал.
+In addition to working in a browser with a graphical interface, the service also provides an API that duplicates its functionality.
 
-## Ключевые технологии и библиотеки:
+## Key technologies and libraries:
 - [Python](https://www.python.org/);
 - [Flask](https://pypi.org/project/Flask/);
 - [SQLAlchemy](https://pypi.org/project/SQLAlchemy/);
 
-## Установка
-1. Склонируйте репозиторий:
+## Installation:
+1. Clone the repository:
 ```
 git clone https://github.com/StanislavBerezovskii/yacut.git
 ```
-2. Активируйте виртуальное окружение venv и установите зависимости проекта:
+2. Activate the venv virtual environment and install the project dependencies:
 ```
 python -m venv venv
 source venv/Scripts/activate
 pip install -r requirements.txt
 ```
-3. Создайте в корневой директории проекта файл .env со следующим наполнением:
+3. Create an .env file in the root directory of the project with the following content:
 ```
 FLASK_APP=yacut
 FLASK_ENV=development или production
 DATABASE_URI=sqlite:///db.sqlite3
-SECRET_KEY=<ваш_секретный_ключ>
+SECRET_KEY=<your_secret_key>
 ```
-4. Проект готов к запуску.
+4. The project is ready for launch.
 
-## Управление:
-Для локального запуска сервиса выполните команду:
+## Usage:
+To start the service locally, run the command:
 ```
 flask run
 ```
-Сервис будет запущен и доступен по следующим адресам:
-- http://localhost/ - главная страница сервиса;
+The service will be launched and available via the following addresses:
+- http://localhost/ - main page of the service;
 
-    * Если не заполнить поле для короткой ссылки, она будет сгенерирована автоматически.
-    * Короткая ссылка должна быть не длиннее 16 символов (цифры и латинские буквы в любом регистре).
+    * If the short link field is not filled, it will be generated automatically.
+    * A short link must be no longer than 16 characters (numbers and Latin letters in any case).
 
-- http://localhost/api/id/ - эндпоинт, принимающий POST-запросы;
+- http://localhost/api/id/ - API endpoint that accepts POST requests;
 
-    * Схема POST-запроса:
+    * POST request scheme:
         ```json
         {
         "url": "string",
-        "custom_id": "string" * (необязательное поле)
+        "custom_id": "string" * (optional field)
         }
         ```
-    * Схема ответа на POST-запрос:
+    * Scheme of the response to a POST request:
         ```json
         {
         "url": "string",
@@ -63,23 +64,23 @@ flask run
         }
         ```
 
-- http://localhost/api/id/short_id/ - эндпоинт, принимающий GET-запросы.
+- http://localhost/api/id/short_id/ - endpoint that accepts GET requests.
     
-    В адресе вместо <short_id> должна быть указана введённая или сгенерированная короткая ссылка.
+    The address must contain the created or generated short link instead of <short_id>.
 
-    * Схема ответа на GET-запрос:
+    * Scheme of response to a GET request:
         ```json
         {
         "url": "string"
         }
         ```
 
-    Полная спецификация API доступна в репозитории - см. файл openapi.yml
-
-## Лицензия
+    The full API specification is available in the repository - see openapi.yml file
+  
+## License:
 - ### **MIT License**
 
-### Автор
+### Author:
 Stanislav Berezovskii
 
 berezovskii.stas@gmail.com
