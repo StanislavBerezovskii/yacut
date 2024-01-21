@@ -7,7 +7,7 @@ This project was completed as part of the Python developer + Yandex-Practicum on
 **Yacut** is a link shortening service that associates long user links with short ones. The short link can be suggested by the user, or it will be generated automatically.
 
 Thus, this service allows to turn a long and inconvenient link like “https://flask.palletsprojects.com/en/2.2.x/changes/#version-2-0-0” into a short and simple one like “http ://localhost/ver2".
-After creating a short link, user can be redirected to the original address bu you following the new link.
+After creating a short link, user can be redirected to the original address by following the new link.
 
 In addition to working in a browser with a graphical interface, the service also provides an API that duplicates its functionality.
 
